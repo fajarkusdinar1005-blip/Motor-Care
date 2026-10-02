@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Motor Care</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);--bg:#eceeed;--card:#f7f7f6;--ink:#10201a;--mut:#6b7570;--g:#12935f;--gs:#dff3ea;--dk:#1f2a2e;--w:#c57d14;--ws:#fbeccd;--r:#d64545;--rs:#f9dcdc;--line:#e1e4e2}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1312;--card:#1a1f1d;--ink:#eaf0ed;--mut:#8f9a95;--g:#2fb882;--gs:#173a2c;--dk:#252e31;--w:#e5a43a;--ws:#3d3114;--r:#ee6b6b;--rs:#3d1c1c;--line:#2a312f}}
+:root[data-theme="dark"]{--bg:#0f1312;--card:#1a1f1d;--ink:#eaf0ed;--mut:#8f9a95;--g:#2fb882;--gs:#173a2c;--dk:#252e31;--w:#e5a43a;--ws:#3d3114;--r:#ee6b6b;--rs:#3d1c1c;--line:#2a312f}
+body{font:15px/1.4 'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',sans-serif;background:var(--bg);color:var(--ink)}
+.app{max-width:520px;margin:auto;padding:14px 16px 110px}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.card{background:var(--card);border-radius:22px;padding:16px;box-shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.04);margin-bottom:12px;position:relative;overflow:hidden}
+.dk{background:var(--dk);color:#fff}.dk .sub{color:#aab6b0}
+h1{font-size:28px;line-height:1.1;letter-spacing:-.02em;font-weight:800}
+h2{font-size:17px;font-weight:700}
+.hd{display:flex;justify-content:space-between;align-items:center;margin:4px 0 12px}
+.sub{color:var(--mut);font-size:13px}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:99px;background:var(--bg);font-size:13px;font-weight:600}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+.bike{width:70%;max-width:260px;display:block;margin:6px 0 -4px auto;color:var(--ink)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+.stat{background:var(--card);border-radius:18px;padding:14px 12px;cursor:pointer}
+.stat b{display:block;font-size:20px;font-weight:800}.stat small{color:var(--mut);font-size:12px}
+.qa{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.qa button{background:var(--bg);border:0;border-radius:16px;padding:14px 8px;font:inherit;font-size:13px;color:var(--ink);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px}
+.qa span{font-size:20px}
+.bar{height:8px;border-radius:9px;background:var(--line);overflow:hidden;margin-top:8px}
+.bar i{display:block;height:100%;border-radius:9px;background:var(--g)}
+.bar.w i{background:var(--w)}.bar.r i{background:var(--r)}
+.rt{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.tag{font-size:12px;padding:3px 9px;border-radius:99px;font-weight:600;white-space:nowrap}
+.tag.g{background:var(--gs);color:var(--g)}.tag.w{background:var(--ws);color:var(--w)}.tag.r{background:var(--rs);color:var(--r)}
+.btn{border:0;border-radius:14px;padding:11px 16px;font:inherit;font-weight:600;background:var(--bg);color:var(--ink);cursor:pointer}
+.card>.btn:not(.pri){background:var(--bg)}
+.pri{background:var(--g)!important;color:#fff!important}.dng{background:var(--rs)!important;color:var(--r)!important}.dkb{background:#fff!important;color:#1f2a2e!important}
+.row{display:flex;gap:8px;margin-top:16px}.row .btn{flex:1}
+.mini{display:flex;gap:8px;margin-top:10px}.mini .btn{padding:8px 12px;font-size:13px}
+nav{position:fixed;bottom:0;left:0;right:0;display:flex;justify-content:center;padding:14px 12px calc(10px + env(safe-area-inset-bottom,0px));background:linear-gradient(transparent,var(--bg) 45%);z-index:5}
+nav div{display:flex;max-width:496px;width:100%;background:var(--card);border-radius:26px;padding:6px;box-shadow:0 8px 28px rgba(0,0,0,.12)}
+nav button{flex:1;border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:2px;font:inherit;font-size:11px;padding:8px 0;border-radius:20px;color:var(--mut);cursor:pointer}
+nav .on{background:var(--gs);color:var(--g);font-weight:700}
+#m{position:fixed;inset:0;background:rgba(0,0,0,.42);display:none;align-items:flex-end;justify-content:center;z-index:9}
+#m.on{display:flex}
+.sheet{background:var(--card);width:100%;max-width:520px;max-height:90%;overflow:auto;border-radius:26px 26px 0 0;padding:18px 18px calc(18px + env(safe-area-inset-bottom,0px))}
+.sh{display:flex;justify-content:space-between;align-items:center;font-size:17px}
+.x{border:0;background:var(--bg);color:var(--ink);width:34px;height:34px;border-radius:50%;font-size:14px;cursor:pointer}
+input,select,textarea{width:100%;padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit}
+label{display:block;font-size:12px;color:var(--mut);margin:12px 0 4px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{padding:7px 12px;border-radius:99px;background:var(--bg);font-size:13px;border:1px solid var(--line);cursor:pointer;color:var(--ink)}
+.chip.on{background:var(--gs);color:var(--g);border-color:var(--g);font-weight:600}
+.ci{padding:12px 0;border-bottom:1px solid var(--line)}.ci:last-of-type{border:0}
+.ci>div:first-child{margin-bottom:8px;cursor:pointer}
+.seg{display:flex;gap:6px}
+.seg button{flex:1;border:1px solid var(--line);background:var(--bg);border-radius:12px;padding:9px 0;font:inherit;font-size:13px;color:var(--ink);cursor:pointer}
+.seg .s0.on{background:var(--gs);color:var(--g);border-color:var(--g);font-weight:700}
+.seg .s1.on{background:var(--ws);color:var(--w);border-color:var(--w);font-weight:700}
+.seg .s2.on{background:var(--rs);color:var(--r);border-color:var(--r);font-weight:700}
+.li{display:flex;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px solid var(--line);cursor:pointer}.li:last-child{border:0}
+.li small{color:var(--mut);display:block;font-size:12px}
+.big{font-size:30px;font-weight:800;letter-spacing:-.02em}
+.cols{display:flex;align-items:flex-end;gap:8px;height:120px;margin-top:14px}
+.col{flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:6px;font-size:11px;color:var(--mut)}
+.col i{width:100%;background:var(--g);border-radius:8px 8px 4px 4px;min-height:3px}
+.empty{color:var(--mut);text-align:center;padding:20px 0;font-size:14px}
+</style>
+</head>
+<body>
+<div class="app"><div class="top"><b style="font-size:17px">🛵 Motor Care</b><button class="btn" onclick="settings()" aria-label="Pengaturan">⚙</button></div><div id="v"></div></div>
+<nav><div id="n"></div></nav>
+<div id="m"></div>
+<script>
+const $=s=>document.querySelector(s),uid=()=>Math.random().toString(36).slice(2,9),K='motorcare_v1';
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const nf=n=>Math.round(n).toLocaleString('id-ID'),idr=n=>'Rp'+nf(n||0);
+const sh=n=>n>=1e6?(n/1e6).toFixed(1).replace('.',',')+' jt':n>=1e3?nf(n/1e3)+' rb':nf(n);
+const ymd=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'),td=()=>ymd(new Date());
+const fd=d=>d?new Date(d).toLocaleDateString('id-ID',{day:'numeric',month:'short',year:'numeric'}):'-';
+const TY=[['servis','Servis'],['bbm','BBM'],['pajak','Pajak/STNK'],['lain','Lainnya']],tl=t=>(TY.find(x=>x[0]==t)||[0,t])[1];
+const ic={home:'M3 11l9-8 9 8v10H4z',cek:'M9 11l3 3 9-9M20 12v8H4V4h11',jad:'M3 5h18v16H3zM3 10h18M8 3v4M16 3v4',riw:'M8 6h13M8 12h13M8 18h13M3 6h1M3 12h1M3 18h1',biy:'M2 7h20v13H2zM2 11h20M16 16h2'};
+const BIKE='<svg class="bike" viewBox="0 0 220 110" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><circle cx="48" cy="84" r="17" fill="var(--dk)"/><circle cx="176" cy="84" r="17" fill="var(--dk)"/><path d="M65 84h62l10-26H85c-14 0-20 12-20 26z" fill="var(--line)"/><path d="M82 52c0-8 6-12 14-12h28"/><path d="M137 58l12-34h14M149 24l-5-6"/></svg>';
+let S,tab='home',filt='all',cur={},cn='';
+function seed(odo){const t=td();return{motor:{name:'Motor Matic Saya',plate:'',odo:odo||0},fresh:1,
+rem:[['Oli mesin',2000,3],['Oli gardan',8000,12],['Filter udara',8000,12],['Busi',8000,0],['V-belt & roller CVT',20000,0],['Kampas rem',15000,0],['Aki',0,24],['Air radiator',0,6],['Servis berkala',4000,6],['Pajak STNK',0,12]].map(a=>({id:uid(),name:a[0],km:a[1],mo:a[2],lastKm:odo||0,lastDate:t})),
+chk:['Tekanan ban depan & belakang','Kondisi ban (retak/aus)','Level oli mesin','Rem depan','Rem belakang','Lampu utama, rem & sein','Klakson','Level air radiator','Aki & starter','Suara CVT / getaran','Kebocoran oli atau cairan','Baut & kunci kendor'].map(n=>({id:uid(),name:n})),logs:[],rec:[]}}
+function load(){try{S=JSON.parse(localStorage.getItem(K))}catch(e){S=null}}
+function save(){try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}}
+function rs(r){const o=S.motor.odo,p=[];let pk=0,pt=0;
+if(r.km){const a=r.lastKm+r.km-o;pk=(o-r.lastKm)/r.km;p.push(a>=0?nf(a)+' km lagi':'lewat '+nf(-a)+' km')}
+if(r.mo){const d=new Date(r.lastDate);d.setMonth(d.getMonth()+r.mo);const b=Math.round((d-new Date())/864e5);pt=(Date.now()-new Date(r.lastDate))/(r.mo*30.4*864e5);p.push(b>=0?b+' hari lagi':'lewat '+(-b)+' hari')}
+const m=Math.max(pk,pt);return{p:m,st:m>=1?'r':m>=.8?'w':'g',txt:p.join(' · ')}}
+const sumBy=f=>S.rec.filter(f).reduce((a,x)=>a+(x.cost||0),0);
+function bar(s){return`<div class="bar ${s.st}"><i style="width:${Math.min(100,s.p*100)}%"></i></div>`}
+function remInfo(r){return(r.km?'tiap '+nf(r.km)+' km':'')+(r.km&&r.mo?' / ':'')+(r.mo?'tiap '+r.mo+' bln':'')||'interval belum diatur'}
+const V={
+home(){const m=S.motor,L=S.rem.map(r=>({r,s:rs(r)})).sort((a,b)=>b.s.p-a.s.p),lg=S.logs[0];
+const over=L.filter(x=>x.s.st=='r').length,soon=L.filter(x=>x.s.st=='w').length;
+const st=over||(lg&&lg.b)?['r','Perlu Servis']:soon||(lg&&lg.p)?['w','Segera Cek']:['g','Kondisi Prima'];
+const mo=td().slice(0,7),cm=sumBy(x=>x.date.slice(0,7)==mo),yr=sumBy(x=>x.date.slice(0,4)==td().slice(0,4));
+return`<div class="card" style="padding:20px"><div class="sub">Dashboard perawatan</div><h1>${esc(m.name)}</h1><div class="sub">Matic${m.plate?' · '+esc(m.plate):''}</div>
+<div class="pill" style="margin-top:14px"><i class="dot" style="background:var(--${st[0]})"></i>${st[1]}</div>${BIKE}</div>
+<div class="stats"><div class="stat" onclick="odoForm()"><b>${nf(m.odo)}</b><small>km total ✎</small></div>
+<div class="stat" onclick="go('jad')"><b>${over+soon}</b><small>jadwal perlu perhatian</small></div>
+<div class="stat" onclick="go('biy')"><b>${sh(cm)}</b><small>biaya bulan ini</small></div></div>
+<div class="card"><h2>Aksi cepat</h2><div class="qa"><button onclick="recForm()"><span>📝</span>Catat servis</button><button onclick="go('cek')"><span>✅</span>Cek hari ini</button><button onclick="recForm(0,{type:'bbm',title:'Isi bensin'})"><span>⛽</span>Catat BBM</button><button onclick="odoForm()"><span>🧭</span>Update km</button></div></div>
+<div class="hd"><h2>Jadwal terdekat</h2><button class="btn" onclick="go('jad')">Semua</button></div>
+${L.slice(0,3).map(x=>`<div class="card" style="padding:14px" onclick="go('jad')"><div class="rt"><b>${esc(x.r.name)}</b><span class="tag ${x.s.st}">${x.s.txt||'-'}</span></div>${bar(x.s)}</div>`).join('')||'<div class="empty">Belum ada jadwal</div>'}
+<div class="card dk"><div class="sub">Pengeluaran bulan ini</div><div class="big">${idr(cm)}</div><div class="sub">Tahun ini ${idr(yr)}</div><div class="row"><button class="btn dkb" onclick="go('biy')">Lihat detail</button></div></div>
+<div class="card"><div class="rt"><b>Pengecekan terakhir</b><button class="btn" onclick="go('cek')">Cek</button></div>${lg?`<div class="sub" style="margin-top:6px">${fd(lg.date)} · ${lg.a} aman, ${lg.p} perhatikan, ${lg.b} bahaya</div>`:'<div class="sub" style="margin-top:6px">Belum ada pengecekan. Mulai dari tab Cek.</div>'}</div>`},
+cek(){return`<div class="hd"><h2>Pengecekan motor</h2><button class="btn" onclick="chkForm()">+ Item</button></div><div class="card">
+${S.chk.map(c=>{const v=cur[c.id]||0;return`<div class="ci"><div onclick="chkForm('${c.id}')">${esc(c.name)} <span class="sub">✎</span></div><div class="seg">${['Aman','Perhatikan','Bahaya'].map((n,i)=>`<button class="s${i} ${v==i?'on':''}" onclick="setC('${c.id}',${i})">${n}</button>`).join('')}</div></div>`}).join('')||'<div class="empty">Belum ada item. Tambah dengan tombol + Item.</div>'}
+<label>Catatan</label><textarea rows="2" oninput="cn=this.value">${esc(cn)}</textarea><div class="row"><button class="btn pri" onclick="saveChk()">Simpan hasil cek</button></div></div>
+<div class="hd"><h2>Riwayat cek</h2></div>
+<div class="card">${S.logs.map(l=>`<div class="li" onclick="logForm('${l.id}')"><div><b>${fd(l.date)}</b><small>${l.a} aman · ${l.p} perhatikan · ${l.b} bahaya</small>${l.bad.length?`<small style="color:var(--r)">${l.bad.map(esc).join(', ')}</small>`:''}${l.note?`<small>${esc(l.note)}</small>`:''}</div><span class="sub">✎</span></div>`).join('')||'<div class="empty">Belum ada riwayat cek</div>'}</div>`},
+jad(){const L=S.rem.map(r=>({r,s:rs(r)})).sort((a,b)=>b.s.p-a.s.p);
+return`<div class="hd"><h2>Jadwal perawatan</h2><button class="btn pri" onclick="remForm()">+ Jadwal</button></div>
+${L.map(x=>`<div class="card"><div class="rt"><b>${esc(x.r.name)}</b><span class="tag ${x.s.st}">${x.s.txt||'-'}</span></div>${bar(x.s)}<div class="sub" style="margin-top:8px">${remInfo(x.r)} · terakhir ${nf(x.r.lastKm)} km, ${fd(x.r.lastDate)}</div><div class="mini"><button class="btn pri" onclick="doneRem('${x.r.id}')">Sudah dikerjakan</button><button class="btn" onclick="remForm('${x.r.id}')">Edit</button></div></div>`).join('')||'<div class="empty">Belum ada jadwal</div>'}`},
+riw(){const l=S.rec.filter(x=>filt=='all'||x.type==filt).sort((a,b)=>b.date.localeCompare(a.date)||b.km-a.km);
+return`<div class="hd"><h2>Riwayat</h2><button class="btn pri" onclick="recForm()">+ Catat</button></div>
+<div class="chips" style="margin-bottom:12px">${[['all','Semua']].concat(TY).map(t=>`<span class="chip ${filt==t[0]?'on':''}" onclick="filt='${t[0]}';render()">${t[1]}</span>`).join('')}</div>
+<div class="card">${l.map(x=>`<div class="li" onclick="recForm('${x.id}')"><div><b>${esc(x.title)}</b><small>${fd(x.date)} · ${tl(x.type)}${x.km?' · '+nf(x.km)+' km':''}${x.place?' · '+esc(x.place):''}</small>${x.note?`<small>${esc(x.note)}</small>`:''}</div><b style="white-space:nowrap">${idr(x.cost)}</b></div>`).join('')||'<div class="empty">Belum ada catatan. Tekan + Catat untuk menambah servis, BBM, atau pajak.</div>'}</div>`},
+biy(){const mk=[];for(let i=5;i>=0;i--){const d=new Date();d.setDate(1);d.setMonth(d.getMonth()-i);mk.push(ymd(d).slice(0,7))}
+const sm=mk.map(k=>sumBy(x=>x.date.slice(0,7)==k)),mx=Math.max(...sm,1),tot=sumBy(()=>1),cm=sm[5];
+const ks=S.rec.filter(x=>x.km>0).map(x=>x.km),span=ks.length>1?Math.max(...ks)-Math.min(...ks):0;
+return`<div class="hd"><h2>Biaya</h2></div><div class="card dk"><div class="sub">Bulan ini</div><div class="big">${idr(cm)}</div><div class="sub">Rata-rata 6 bulan ${idr(sm.reduce((a,b)=>a+b,0)/6)} per bulan</div></div>
+<div class="card"><b>6 bulan terakhir</b><div class="cols">${sm.map((s,i)=>`<div class="col"><span>${s?sh(s):''}</span><i style="height:${s/mx*80}%"></i>${new Date(mk[i]+'-01').toLocaleDateString('id-ID',{month:'short'})}</div>`).join('')}</div></div>
+<div class="card"><b>Per kategori</b>${TY.map(t=>{const s=sumBy(x=>x.type==t[0]);return`<div style="margin-top:12px"><div class="rt"><span>${t[1]}</span><b>${idr(s)}</b></div><div class="bar"><i style="width:${tot?s/tot*100:0}%"></i></div></div>`}).join('')}
+<div class="rt" style="margin-top:16px"><span class="sub">Total semua</span><b>${idr(tot)}</b></div>${span>0?`<div class="rt"><span class="sub">Rata-rata per km</span><b>${idr(tot/span)}</b></div>`:''}</div>`}};
+function render(){$('#v').innerHTML=V[tab]();$('#n').innerHTML=[['home','Beranda'],['cek','Cek'],['jad','Jadwal'],['riw','Riwayat'],['biy','Biaya']].map(a=>`<button class="${tab==a[0]?'on':''}" onclick="go('${a[0]}')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="${ic[a[0]]}"/></svg>${a[1]}</button>`).join('')}
+function go(t){tab=t;render();window.scrollTo(0,0)}
+function setC(id,v){cur[id]=v;render()}
+const cm_=()=>$('#m').classList.remove('on');
+function modal(title,fields,vals,onSave,onDel,delLabel){vals=vals||{};
+let h=`<div class="sheet"><div class="sh"><b>${esc(title)}</b><button class="x" onclick="cm_()">✕</button></div>`;
+fields.forEach(f=>{const v=vals[f.k]!=null?vals[f.k]:'';h+=`<label>${f.l}</label>`;
+if(f.t=='select')h+=`<select id="f_${f.k}">${f.o.map(o=>`<option value="${o[0]}" ${o[0]==v?'selected':''}>${o[1]}</option>`).join('')}</select>`;
+else if(f.t=='area')h+=`<textarea id="f_${f.k}" rows="3">${esc(v)}</textarea>`;
+else if(f.t=='multi')h+=`<div class="chips" id="f_${f.k}">${f.o.map(o=>`<span class="chip ${(vals[f.k]||[]).includes(o[0])?'on':''}" data-v="${o[0]}" onclick="this.classList.toggle('on')">${o[1]}</span>`).join('')}</div>`;
+else h+=`<input id="f_${f.k}" type="${f.t||'text'}" value="${esc(v)}" ${f.t=='number'?'inputmode="decimal"':''}>`});
+h+=`<div class="row"><button class="btn pri" id="sv">Simpan</button>${onDel?`<button class="btn dng" id="dl">${delLabel||'Hapus'}</button>`:''}</div></div>`;
+const m=$('#m');m.innerHTML=h;m.classList.add('on');
+$('#sv').onclick=()=>{const o={};fields.forEach(f=>{const e=$('#f_'+f.k);o[f.k]=f.t=='multi'?[...e.querySelectorAll('.on')].map(c=>c.dataset.v):f.t=='number'?(e.value===''?null:+e.value):e.value});if(onSave(o)!==false){cm_();render()}};
+if(onDel)$('#dl').onclick=()=>{if(confirm((delLabel||'Hapus')+' data ini?')){onDel();cm_();render()}}}
+$('#m').onclick=e=>{if(e.target.id=='m')cm_()};
+function odoForm(){modal('Update kilometer',[{k:'odo',l:'Kilometer sekarang',t:'number'}],S.motor,o=>{if(o.odo==null)return false;S.motor.odo=o.odo;save()})}
+function remForm(id){const e=id?S.rem.find(x=>x.id==id):null;
+modal(e?'Edit jadwal':'Jadwal baru',[{k:'name',l:'Nama komponen'},{k:'km',l:'Interval km (kosongkan jika tidak dipakai)',t:'number'},{k:'mo',l:'Interval bulan (kosongkan jika tidak dipakai)',t:'number'},{k:'lastKm',l:'Terakhir dikerjakan di km',t:'number'},{k:'lastDate',l:'Tanggal terakhir',t:'date'}],e||{lastKm:S.motor.odo,lastDate:td()},
+o=>{if(!o.name)return false;o.km=o.km||0;o.mo=o.mo||0;if(o.lastKm==null)o.lastKm=S.motor.odo;o.lastDate=o.lastDate||td();e?Object.assign(e,o):S.rem.push({id:uid(),...o});save()},
+e&&(()=>{S.rem=S.rem.filter(x=>x.id!=id);save()}))}
+function doneRem(id){if(!confirm('Tandai sudah dikerjakan di km '+nf(S.motor.odo)+' hari ini?'))return;const r=S.rem.find(x=>x.id==id);r.lastKm=S.motor.odo;r.lastDate=td();save();render()}
+function recForm(id,pre){const e=id?S.rec.find(x=>x.id==id):null,v=e||Object.assign({type:'servis',date:td(),km:S.motor.odo},pre||{});
+modal(e?'Edit catatan':'Catatan baru',[{k:'type',l:'Jenis',t:'select',o:TY},{k:'date',l:'Tanggal',t:'date'},{k:'km',l:'Kilometer',t:'number'},{k:'title',l:'Judul (mis. Ganti oli)'},{k:'place',l:'Tempat / bengkel'},{k:'cost',l:'Biaya (Rp)',t:'number'},{k:'comps',l:'Komponen yang dikerjakan (jadwalnya otomatis di-reset)',t:'multi',o:S.rem.map(r=>[r.id,esc(r.name)])},{k:'note',l:'Catatan',t:'area'}],v,
+o=>{if(!o.date)return false;o.title=o.title||tl(o.type);o.cost=o.cost||0;e?Object.assign(e,o):S.rec.push({id:uid(),...o});
+if(o.type=='servis')(o.comps||[]).forEach(cid=>{const r=S.rem.find(x=>x.id==cid);if(r&&(!r.lastDate||o.date>=r.lastDate)){r.lastKm=o.km!=null?o.km:S.motor.odo;r.lastDate=o.date}});
+if(o.km>S.motor.odo)S.motor.odo=o.km;save()},
+e&&(()=>{S.rec=S.rec.filter(x=>x.id!=id);save()}))}
+function chkForm(id){const e=id?S.chk.find(x=>x.id==id):null;
+modal(e?'Edit item cek':'Item cek baru',[{k:'name',l:'Nama item'}],e||{},o=>{if(!o.name)return false;e?e.name=o.name:S.chk.push({id:uid(),name:o.name});save()},e&&(()=>{S.chk=S.chk.filter(x=>x.id!=id);delete cur[id];save()}))}
+function saveChk(){const l={id:uid(),date:td(),note:cn,a:0,p:0,b:0,bad:[]};
+S.chk.forEach(c=>{const v=cur[c.id]||0;l['apb'[v]]++;if(v)l.bad.push(c.name+(v==2?' (bahaya)':' (perhatikan)'))});
+S.logs.unshift(l);cur={};cn='';save();render()}
+function logForm(id){const e=S.logs.find(x=>x.id==id);modal('Hasil cek',[{k:'date',l:'Tanggal',t:'date'},{k:'note',l:'Catatan',t:'area'}],e,o=>{if(!o.date)return false;e.date=o.date;e.note=o.note;save()},()=>{S.logs=S.logs.filter(x=>x.id!=id);save()})}
+function settings(){const orig=JSON.stringify(S),f=[{k:'name',l:'Nama motor'},{k:'plate',l:'Plat nomor'},{k:'odo',l:'Kilometer sekarang',t:'number'}];
+if(!S.fresh)f.push({k:'bk',l:'Cadangan data. Salin teks ini untuk menyimpan; tempel teks cadangan lalu Simpan untuk memulihkan.',t:'area'});
+modal(S.fresh?'Selamat datang! Isi data motor':'Pengaturan',f,Object.assign({},S.motor,{bk:orig}),o=>{
+if(o.bk&&o.bk!==orig){try{const n=JSON.parse(o.bk);if(!n.rem||!n.motor)throw 0;S=n}catch(x){alert('Format cadangan tidak valid');return false}}
+else{S.motor={name:o.name||S.motor.name,plate:o.plate,odo:o.odo||0};if(S.fresh){S.rem.forEach(r=>r.lastKm=S.motor.odo);delete S.fresh}}save()},
+S.fresh?null:()=>{S=seed(0);save();setTimeout(settings,60)},'Hapus semua')}
+load();if(!S||!S.rem){S=seed(0);save();setTimeout(settings,60)}render();
+</script>
+</body>
+</html>
